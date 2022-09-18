@@ -1,0 +1,19 @@
+{{template "base" .}}
+
+{{define "content"}}
+    <div class="container">
+        <p>Home Page</p>
+        <div class="btn btn-outline-secondary" id="baseBtn">Click me!</div>
+    </div>
+{{end}}
+
+{{define "js"}}
+    <script>
+        let count = 0;
+        let baseBtn = document.getElementById("baseBtn");
+        baseBtn.addEventListener("click", function() {
+            count++;
+            baseBtn.innerHTML = `Clicked ${count} times`;
+        });
+    </script>
+{{end}}
