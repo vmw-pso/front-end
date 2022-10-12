@@ -1,0 +1,62 @@
+{{template "base" .}}
+
+{{define "content"}}
+    <div class="container">
+        <div class="row">
+            <div class="col-4 mx-auto">
+                <form>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="username">Username</label>
+                        <input type="text" id="username" class="form-control" />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="remail">Email</label>
+                        <input type="email" id="email" class="form-control" />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" id="password" class="form-control" />
+                    </div>
+                    <button type="submit" id="submitBtn" class="btn btn-outline-secondary btn-block mb-3">Sign Up</button>
+                    <div class="text-center">
+                        <p>Already registered? <a href="/signin">Sign In</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{{end}}
+
+{{define "js"}}
+    <script>
+        let submitBtn = document.getElementById("submitBtn");
+        submitBtn.addEventListener("click", function() {
+            let name = document.getElementById("username").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            // validate input here
+
+            const payload = {
+                action: "signup",
+                data: {
+                    username: username,
+                    email: email,
+                    password: password,
+                }
+            };
+
+            const headers = new Headers();
+            headers.append("Content-Type", "application/json");
+
+            {{/* const body = {
+                method: 'POST',
+                body: JSON.stringify(payload),
+                headers: headers,
+            } */}}
+
+            console.log(JSON.stringify(payload));
+        });
+        
+    </script>
+{{end}}

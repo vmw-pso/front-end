@@ -44,12 +44,26 @@ func newServer() *server {
 }
 
 func (s *server) routes() {
+	s.mux.Handle("/signin", s.handleSignIn())
+	s.mux.Handle("/signup", s.handleSignUp())
 	s.mux.Handle("/", s.handleIndex())
 }
 
 func (s *server) handleIndex() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		render(w, "index")
+	}
+}
+
+func (s *server) handleSignIn() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		render(w, "signin")
+	}
+}
+
+func (s *server) handleSignUp() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		render(w, "signup")
 	}
 }
 
